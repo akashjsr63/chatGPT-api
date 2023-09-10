@@ -131,6 +131,7 @@ router.post('/uploadQues', async (req, res) => {
                    <div style="font-weight: bold;">
                    ${response}
                    </div>
+                   <img src="${data.siteUrl}" width="100%" alt="screenshot">
                   </div>`;
       res.send(html);
 

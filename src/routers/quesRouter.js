@@ -21,6 +21,12 @@ router.get('/live', async (req,res)=>{
   // pusher.trigger("my-channel", "my-event", latestData);
 })
 
+router.get('/getLatest', async (req,res)=>{
+  const latestData = await QuesModel.findOne().sort({ _id: -1 }).exec();
+  res.send(latestData);
+  // pusher.trigger("my-channel", "my-event", latestData);
+})
+
 router.post('/test',(req,res)=>{
   try {
     // console.log(req.body)

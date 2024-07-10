@@ -9,6 +9,8 @@ const path = require('path');
 const http = require('http');
 const port= process.env.PORT || 3000;
 
+const { guest } = require('./middlewares/guest');
+
 const serverTimeout = 3*60000;
 app.timeout = serverTimeout;
 
@@ -21,6 +23,7 @@ app.set('view engine', 'hbs');
 app.use(express.json());
 
 app.use('/api', dataRoute);
+app.use('/guest', guest, dataRoute);
 
 app.get('/', (req,res)=>{
   res.send('Send a post request at https://bronze-piranha-coat.cyclic.app/answer')

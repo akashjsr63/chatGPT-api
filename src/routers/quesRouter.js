@@ -74,13 +74,13 @@ router.post('/uploadQues', async (req, res) => {
       let jsonData = JSON.stringify(savedData);
       pusher.trigger("my-channel", "my-event", jsonData);
 
-      setTimeout(async () => { 
-       try {
-         await fetchAnswer(savedData._id, savedData.quesHtml);
-       } catch (error) {
-         console.error('Error in background task:', error);
-       }
-       }, 0);
+      // setTimeout(async () => { 
+      //  try {
+      //    await fetchAnswer(savedData._id, savedData.quesHtml);
+      //  } catch (error) {
+      //    console.error('Error in background task:', error);
+      //  }
+      //  }, 0);
 
     } catch (error) {
       console.error('Error while uploading data:', error);
@@ -128,7 +128,7 @@ router.post('/uploadQues', async (req, res) => {
 
       const html = `<h2 style="margin-top: 40px; text-align:center; color: blue;">Question </h2>
                   <div style="margin: 3vw; font-size: 16px; line-height: 1.6;">
-                  Behaving as a subject matter expert you should directly Provide a concise and precise answer to the following question without any explaination  to the question and if code snippet s provided solve the question in cpp. the question is : 
+                  As a subject matter expert, provide a direct and precise answer to the following question without any explanation. If the question includes a code snippet, solve it using C++. The question is: 
                   <br>
                    ${data.quesHtml}
                    <br>
